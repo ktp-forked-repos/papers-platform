@@ -6,8 +6,10 @@ from wagtail.admin.edit_handlers import FieldPanel
 
 
 class PaperPage(Page):
+    link = models.URLField()
     intro = RichTextField(blank=True)
 
     content_panels = Page.content_panels + [
-        FieldPanel('intro', classname="full")
+        FieldPanel('link'),
+        FieldPanel('intro', classname="full"),
     ]
