@@ -10,10 +10,9 @@
     {{ page.summary|richtext }}
 
     <h2>Papers</h2>
-    {% for paper in page.get_children %}
+    {% for paper in papers %}
         <h2><a href="{% pageurl paper %}">{{ paper.title }}</a></h2>
-        {{ post.specific.intro }}
     {% endfor %}
 
-    <a href="/">Home</a>
+    <p><a href="/">Home</a></p>
 {% endblock %}

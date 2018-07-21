@@ -11,3 +11,9 @@ class HomePage(Page):
     content_panels = Page.content_panels + [
         FieldPanel('body'),
     ]
+
+    def get_context(self, request):
+        # Update context to include only published posts
+        context = super().get_context(request)
+        context['topics'] = self.get_children().live()
+        return context

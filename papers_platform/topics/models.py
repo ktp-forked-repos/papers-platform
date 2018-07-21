@@ -11,3 +11,9 @@ class TopicPage(Page):
     content_panels = Page.content_panels + [
         FieldPanel('summary'),
     ]
+
+    def get_context(self, request):
+        # Update context to include only published posts
+        context = super().get_context(request)
+        context['papers'] = self.get_children().live()
+        return context

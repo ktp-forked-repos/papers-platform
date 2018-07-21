@@ -15,5 +15,15 @@
     <h2>Video</h2>
     <iframe width="560" height="315" src="https://www.youtube.com/embed/{{ page.video_id }}" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
 
+    {% for block in page.extensions %}
+        {% if block.block_type == 'heading' %}
+            <h2>{{ block.value }}</h2>
+        {% else %}
+            <section class="block-{{ block.block_type }}">
+                {% include_block block %}
+            </section>
+        {% endif %}
+    {% endfor %}
+
     <p>Back to <a href="{{ page.get_parent.url }}">{{ page.get_parent.title }}</a></p>
 {% endblock %}

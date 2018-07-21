@@ -10,8 +10,8 @@
     {{ page.body|richtext }}
 
     <h2>Topics</h2>
-    {% for paper in page.get_children %}
-        <h2><a href="{% pageurl paper %}">{{ paper.title }}</a></h2>
-        {{ post.specific.intro }}
+    {% for topic in topics %}
+        <h2><a href="{% pageurl topic %}">{{ topic.title }}</a></h2>
+        {{ topic.specific.summary|richtext }}
     {% endfor %}
 {% endblock %}
