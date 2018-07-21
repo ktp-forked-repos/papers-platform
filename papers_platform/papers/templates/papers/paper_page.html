@@ -9,8 +9,11 @@
 
     <p><a href="{{ page.link }}">Link to paper</a></p>
 
-    <h2>Description</h2>
-    {{ page.intro|richtext }}
+    <h2>Summary</h2>
+    {{ page.summary|richtext }}
 
-    <a href="/">Home</a>
+    <h2>Video</h2>
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/{{ page.video_id }}" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+
+    <p>Back to <a href="{{ page.get_parent.url }}">{{ page.get_parent.title }}</a></p>
 {% endblock %}

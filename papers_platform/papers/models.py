@@ -7,9 +7,11 @@ from wagtail.admin.edit_handlers import FieldPanel
 
 class PaperPage(Page):
     link = models.URLField()
-    intro = RichTextField(blank=True)
+    video_id = models.CharField(max_length=32)
+    summary = RichTextField(blank=True)
 
     content_panels = Page.content_panels + [
         FieldPanel('link'),
-        FieldPanel('intro', classname="full"),
+        FieldPanel('video_id'),
+        FieldPanel('summary', classname="full"),
     ]

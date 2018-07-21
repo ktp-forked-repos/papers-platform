@@ -9,7 +9,7 @@
 
     {{ page.body|richtext }}
 
-    <h2>Papers</h2>
+    <h2>Topics</h2>
     {% for paper in page.get_children %}
         <h2><a href="{% pageurl paper %}">{{ paper.title }}</a></h2>
         {{ post.specific.intro }}
