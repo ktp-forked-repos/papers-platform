@@ -5,13 +5,24 @@
 {% block body_class %}template-homepage{% endblock %}
 
 {% block content %}
-    <h1>{{page.title}}</h1>
+    <div class="jumbotron">
+        <div class="container">
+            <h1>{{page.title}}</h1>
+            {{ page.body|richtext }}
+            <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more &raquo;</a></p>
+        </div>
+    </div>
 
-    {{ page.body|richtext }}
+    <div class="container">
+        <div class="row">
+            {% for topic in topics %}
+                <div class="col-md-4">
+                    <h2>{{ topic.title }}</h2>
+                    {{ topic.specific.summary|richtext }}
+                    <p><a class="btn btn-secondary" href="{% pageurl topic %}" role="button">View details &raquo;</a></p>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
 
-    <h2>Topics</h2>
-    {% for topic in topics %}
-        <h2><a href="{% pageurl topic %}">{{ topic.title }}</a></h2>
-        {{ topic.specific.summary|richtext }}
-    {% endfor %}
 {% endblock %}

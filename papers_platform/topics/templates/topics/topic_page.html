@@ -5,14 +5,24 @@
 {% block body_class %}template-homepage{% endblock %}
 
 {% block content %}
-    <h1>{{page.title}}</h1>
+    <div class="jumbotron">
+        <div class="container">
+            <h1>{{page.title}}</h1>
+            {{ page.summary|richtext }}
+            <div><a href="/">Home</a></div>
+        </div>
+    </div>
 
-    {{ page.summary|richtext }}
+    <div class="container">
+        <div class="row">
+            {% for paper in papers %}
+                <div class="col-md-4">
+                    <h2>{{ paper.title }}</h2>
+                    {{ paper.specific.summary|richtext }}
+                    <p><a class="btn btn-secondary" href="{% pageurl paper %}" role="button">View details &raquo;</a></p>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
 
-    <h2>Papers</h2>
-    {% for paper in papers %}
-        <h2><a href="{% pageurl paper %}">{{ paper.title }}</a></h2>
-    {% endfor %}
-
-    <p><a href="/">Home</a></p>
 {% endblock %}
