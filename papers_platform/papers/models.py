@@ -7,6 +7,14 @@ from wagtail.admin.edit_handlers import FieldPanel, StreamFieldPanel
 from wagtail.images.blocks import ImageChooserBlock
 
 
+class equationBlock(blocks.StructBlock):
+    equation = blocks.TextBlock(required=True)
+
+    class Meta:
+        icon = "cogs"
+        template = 'papers/blocks/equation_block.html'
+
+
 class PaperPage(Page):
     link = models.URLField()
     video_id = models.CharField(max_length=32)
@@ -15,6 +23,7 @@ class PaperPage(Page):
     extensions = StreamField([
         ('heading', blocks.CharBlock(classname="full title")),
         ('paragraph', blocks.RichTextBlock()),
+        ('equation', equationBlock()),
         ('image', ImageChooserBlock()),
     ],null=True, blank=True)
 
